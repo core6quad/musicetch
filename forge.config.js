@@ -4,12 +4,26 @@ const { FuseV1Options, FuseVersion } = require('@electron/fuses');
 module.exports = {
   packagerConfig: {
     asar: true,
+    icon: './icon', // Move to root, no need for icons folder
   },
   rebuildConfig: {},
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
-      config: {},
+      config: {
+        authors: 'Your Name',
+        description: 'Music Player App',
+        iconUrl: 'https://raw.githubusercontent.com/yourusername/musicetch/main/icon.ico',
+        setupIcon: './icon.ico',
+      },
+    },
+    {
+      name: '@electron-forge/maker-dmg',
+      config: {
+        background: './assets/dmg-background.png',
+        format: 'ULFO',
+        icon: './icon.icns',
+      },
     },
     {
       name: '@electron-forge/maker-zip',
@@ -17,7 +31,11 @@ module.exports = {
     },
     {
       name: '@electron-forge/maker-deb',
-      config: {},
+      config: {
+        options: {
+          icon: './icon.png',
+        },
+      },
     },
     {
       name: '@electron-forge/maker-rpm',
