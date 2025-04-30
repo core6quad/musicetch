@@ -10,6 +10,7 @@ module.exports = {
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
+      platforms: ['win32'],
       config: {
         authors: 'Your Name',
         description: 'Music Player App',
@@ -19,6 +20,7 @@ module.exports = {
     },
     {
       name: '@electron-forge/maker-dmg',
+      platforms: ['darwin'],
       config: {
         background: './assets/dmg-background.png',
         format: 'ULFO',
@@ -37,6 +39,7 @@ module.exports = {
           icon: './icon.png',
           maintainer: 'Your Name',
           homepage: 'https://github.com/yourusername/musicetch',
+          categories: ['AudioVideo', 'Audio'],
         },
       },
     },
@@ -48,6 +51,7 @@ module.exports = {
           icon: './icon.png',
           maintainer: 'Your Name',
           homepage: 'https://github.com/yourusername/musicetch',
+          categories: ['AudioVideo', 'Audio'],
         },
       },
     },
