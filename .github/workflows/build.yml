@@ -2,9 +2,9 @@ name: Build Electron App
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, master ]
 
 jobs:
   build:
@@ -12,25 +12,26 @@ jobs:
 
     strategy:
       matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        os: [macos-latest, windows-latest, ubuntu-latest]
 
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
+    - name: Check out Git repository
+      uses: actions/checkout@v4
+
+    - name: Install Node.js
+      uses: actions/setup-node@v4
       with:
         node-version: 18
         cache: 'npm'
-        
-    - name: Install Dependencies
+
+    - name: Install dependencies
       run: npm install
-      
-    - name: Build Application
+
+    - name: Build Electron app
       run: npm run make
-      
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v3
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.os }}-build
         path: |
@@ -38,3 +39,4 @@ jobs:
           out/make/**/*.dmg
           out/make/**/*.deb
           out/make/**/*.rpm
+        if-no-files-found: warn
