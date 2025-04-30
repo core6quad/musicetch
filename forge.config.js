@@ -27,19 +27,29 @@ module.exports = {
     },
     {
       name: '@electron-forge/maker-zip',
-      platforms: ['darwin'],
+      platforms: ['darwin', 'linux', 'win32'],
     },
     {
       name: '@electron-forge/maker-deb',
+      platforms: ['linux'],
       config: {
         options: {
           icon: './icon.png',
+          maintainer: 'Your Name',
+          homepage: 'https://github.com/yourusername/musicetch',
         },
       },
     },
     {
       name: '@electron-forge/maker-rpm',
-      config: {},
+      platforms: ['linux'],
+      config: {
+        options: {
+          icon: './icon.png',
+          maintainer: 'Your Name',
+          homepage: 'https://github.com/yourusername/musicetch',
+        },
+      },
     },
   ],
   plugins: [
