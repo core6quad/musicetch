@@ -22,14 +22,18 @@ module.exports = {
       name: '@electron-forge/maker-dmg',
       platforms: ['darwin'],
       config: {
-        background: './assets/dmg-background.png',
-        format: 'ULFO',
         icon: './icon.icns',
+        format: 'ULFO',
       },
     },
     {
       name: '@electron-forge/maker-zip',
-      platforms: ['darwin', 'linux', 'win32'],
+      config: {},
+      platforms: ['darwin'],
+    },
+    {
+      name: '@electron-forge/maker-zip',
+      platforms: ['linux', 'win32'],
     },
     {
       name: '@electron-forge/maker-deb',

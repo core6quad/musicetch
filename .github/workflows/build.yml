@@ -36,11 +36,11 @@ jobs:
     - name: Build Electron app
       run: |
         if [ "${{ matrix.os }}" = "ubuntu-latest" ]; then
-          npm run make -- --platform=linux
+          npm run make -- --platform=linux --targets=@electron-forge/maker-deb,@electron-forge/maker-rpm
         elif [ "${{ matrix.os }}" = "windows-latest" ]; then
-          npm run make -- --platform=win32
+          npm run make -- --platform=win32 --targets=@electron-forge/maker-squirrel
         else
-          npm run make -- --platform=darwin
+          npm run make -- --platform=darwin --targets=@electron-forge/maker-dmg,@electron-forge/maker-zip
         fi
       shell: bash
 
