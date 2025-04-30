@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Music Player</title>
+  <style>
+    html {
+      background: transparent;
+    }
+    
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding-bottom: 80px;
+      background: rgba(255, 255, 255, 0.6);
+      -webkit-app-region: no-drag; /* Ensure main content is not draggable */
+    }
+  
+    h1 {
+      padding: 20px;
+      background: rgba(40, 44, 52, 0.85);
+      color: white;
+      margin: 0;
+      -webkit-app-region: drag; /* Make header draggable */
+      user-select: none; /* Prevent text selection while dragging */
+    }
+
+    #controls {
+      background: rgba(32, 35, 42, 0.85);
+    }
+
+    #progress-container {
+      background: rgba(240, 240, 240, 0.85);
+    }
+
+    li:hover {
+      background: rgba(221, 221, 221, 0.5);
+    }
+  
+    #select-folder, #reset-folder {
+      -webkit-app-region: no-drag; /* Ensure buttons are clickable */
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0 20px;
+    }
+  
+    li {
+      padding: 5px;
+      cursor: pointer;
+      user-select: none;
+      background: rgba(255, 255, 255, 0.5);
+    }
+  
+    #controls {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    }
+  
+    #control-buttons button {
+      font-size: 20px;
+      margin: 0 5px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+  
+    #control-buttons button:hover {
+      color: #61dafb;
+    }
+
+    #progress-container {
+  position: fixed;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  padding: 0 20px 10px;
+  background: rgba(240, 240, 240, 0.7);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+#time-display {
+  font-size: 14px;
+  text-align: right;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+#progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#progress {
+  height: 100%;
+  width: 0%;
+  background-color: #61dafb;
+  transition: width 0.1s linear;
+}
+
+  </style>
+  
+</head>
+<body>
+  <h1>Simple Music Player</h1>
+  <button id="select-folder">Select Music Folder</button>
+  <button id="reset-folder">Reset Folder</button>
+
+  <ul id="music-list"></ul>
+
+  <div id="controls">
+    <div id="controls">
+      <span id="current-track">No track selected</span>
+      <div id="control-buttons">
+        <button id="prev">⏮️</button>
+        <button id="play">▶️</button>
+        <button id="next">⏭️</button>
+        <button id="repeat">🔁</button>
+
+      </div>
+    </div>
+    <div id="progress-container">
+      <div id="time-display">00:00 / 00:00</div>
+      <div id="progress-bar">
+        <div id="progress"></div>
+      </div>
+    </div>
+    <audio id="player" controls style="display:none;"></audio>
+    
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+
+</html>
